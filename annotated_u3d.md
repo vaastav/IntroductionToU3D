@@ -12,6 +12,11 @@ Before we start looking at the U3D file format, for those who don't know what U3
 U3D is a compressed file format standard for 3D omputer graphics data.
 The goal of U3D is to create a universal standarad for 3D data of all kinds, so as to make data exchange easier.
 
-Personally, for my job, I have only used 3D data to write meshes with corresponding textures to a U3D object. Although, you can write a lot more cool stuff with U3D like animation data.\
+Personally, for my job, I have only used 3D data to write meshes with corresponding textures to a U3D object. Although, you can write a lot more cool stuff with U3D like animation data.
+
+### Supported Elements
+
+If you plan to embed, your U3D objects in a PDF, then you should read this [document](http://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/U3DElements.pdf) first as Adobe Acrobat only supports a subset of the elements that U3D provides. 
+Additionaly, Adobe also doesn't support some of the texture modes like those of texture generation but I will talk about them later when I get into the details.
 
 
