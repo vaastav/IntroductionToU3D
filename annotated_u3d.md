@@ -19,4 +19,8 @@ Personally, for my job, I have only used 3D data to write meshes with correspond
 If you plan to embed, your U3D objects in a PDF, then you should read this [document](http://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/U3DElements.pdf) first as Adobe Acrobat only supports a subset of the elements that U3D provides. 
 Additionaly, Adobe also doesn't support some of the texture modes like those of texture generation but I will talk about them later when I get into the details.
 
+## External Library
 
+As part of the consortium, Intel released a library which is available on sourceforge.
+
+## File Format Essentials
