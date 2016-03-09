@@ -39,12 +39,12 @@ Each block must be 32-bit or 4-byte aligned with each other. This basically mean
 
 All Blocks in U3D have the same structure.
 
-4 bytes : BlockType - Identifies the kind of data present in this block
-4 bytes : DataSize - Size of the data section in bytes. **Does not include any padding**
-4 bytes : MetaDataSize - Size of the meta data section in bytes. **Does not include any padding**
-*DataSize* bytes : Data - Interpreted w.r.t to the block type
-0-3 bytes : Padding. Added to maintain 32-bit alignment for the start of the metadata section
-*MetaDataSize* bytes : Metadata - An array of Key/Value Pairs. I personally have never used metadata and this is very much optional as you can just put the MetaDataSize to be 0, but I will try in the future and update the post.
-0-3 bytes : Padding. Added to maintain 32-bit alignment for the start of the next block.
++ 4 bytes : BlockType - Identifies the kind of data present in this block
++ 4 bytes : DataSize - Size of the data section in bytes. **Does not include any padding**
++ 4 bytes : MetaDataSize - Size of the meta data section in bytes. **Does not include any padding**
++ *DataSize* bytes : Data - Interpreted w.r.t to the block type
++ 0-3 bytes : Padding. Added to maintain 32-bit alignment for the start of the metadata section
++ *MetaDataSize* bytes : Metadata - An array of Key/Value Pairs. I personally have never used metadata and this is very much optional as you can just put the MetaDataSize to be 0, but I will try in the future and update the post.
++ 0-3 bytes : Padding. Added to maintain 32-bit alignment for the start of the next block.
 
 **NOTE: Any padding byte must have the value 0x00.**
