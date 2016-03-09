@@ -48,3 +48,21 @@ All Blocks in U3D have the same structure.
 + 0-3 bytes : Padding. Added to maintain 32-bit alignment for the start of the next block.
 
 **NOTE: Any padding byte must have the value 0x00.**
+
+## File Header Block
+
+Here is the file header block from the U3D file in terms of HEX values in little endian form.
+For the ease of understanding, I have broken down the block into lines of 12 bytes and will go through it line by line.
+```
+55 33 44 00 20 00 00 00 00 00 00 00
+00 00 00 00 0C 00 00 00 29 01 00 00
+7F 02 00 00 00 00 00 00 6A 00 00 00 
+00 00 00 00 00 00 F0 3F
+```
+Line 1 : 55 33 44 00 20 00 00 00 00 00 00 00
+
+** 55 33 44 00 ** : This value is 0x00443355. The BlockType of the File Header Block. It is also the FileIdentifier of the file. This is what you would call a magic number.
+
+** 20 00 00 00 ** : This value is 32 base 10. This is the dataSize of the file header block. The file header block will always have this data size.
+
+** 00 00 00 00 ** : This value is 0. This is the metadataSize. As the file header has no metadata with it, this is 0.
