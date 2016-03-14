@@ -9,4 +9,10 @@ This article focuses on how to embed U3D objects in a PDF file
 
 ### MikTeX
 
+This is for making LaTeX files which will be used to embed U3D files in a PDF
+Download Link: [MikTex](http://miktex.org/download)
+
 ### Adobe Acrobat
+
+This is for reading the 3D PDF files
+Download Link: [Adobe Acrobat](https://get.adobe.com/reader/)
