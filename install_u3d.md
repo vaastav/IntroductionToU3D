@@ -1,6 +1,6 @@
 # How to embed U3D objects in PDF
 
-This article focuses on how to embed U3D objects in a PDF file
+This document describes all the things needed to embed U3D objects into a PDF file in order to generate a 3D PDF.
 
 ## Requirements
 
