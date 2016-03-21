@@ -24,23 +24,30 @@ Embedding U3D objects requires either the movie15 or the media9 packages.
 
 **NOTE: The movie15 package is obsolete and is superseded by media9. So this tutorial uses media9 package.** 
 
-The media9 package requires the media9.sty file which can be downloaded [here](https://www.ctan.org/tex-archive/macros/latex/contrib/media9?lang=en).
-
 **Install Instructions**
 
-1. Go to the folder in C:/ where MikTeX was installed. ( It will probably be "C:\MikTeX 2.9" or "C:\Program Filex (x86)\MikTeX2.9" )
++ Open MiKTeX Package Manager. You can find it by doing a search in Windows Start Bar. 
 
-2. In the installation folder, go to tex/latex/ and create a new folder called media9
+This window should open up on your screen
+![alt text](mpm.png)
 
-3. Copy the media9.sty file which you had previously downloaded and paste it in the media9 folder
++ Type media9 in the name box and press on the filter button. If the 'Installed On' column is not empty that means media9 is already installed and you don't need to follow any further steps
 
-4. Go back to the installation folder and travel miktex/bin
+![alt text](media9.png)
 
-5. Double click on mo.exe
++ Right click on the media9 row and press install 
 
-6. Click on Refresh FNDB button and once it completes, click OK
+![alt text](install.png)
 
-7. After you have completed all the above steps, you will have media9 package installed and ready to use for embedding your favorite U3D objects
++ In the DialogBox that shows up, press ok. The media9 installation should then start
+
+![alt text](popup.png)
+
++ Once the download is complete, click on the close button. Media9 is now installed on your computer.
+
+![alt text](finish.png)
+
++ You can check if the installation was successful by typing media9 in the name field again and pressing the filter button. If it was successful then the 'Installed On' column will show today's date.
 
 ### MacTeX
 
