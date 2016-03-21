@@ -5,7 +5,6 @@ This article focuses on how to embed U3D objects in a PDF file
 ## Requirements
 
 + MikTeX: For generating PDF files that contain U3D objects [Windows]
-+ MacTeX: For generating PDF files that contain U3D objects [OSX]
 + Adobe Acrobat: v7.0 or higher. For viewing PDF files with U3D objects in it.
 
 ### Installing Instructions - Windows
@@ -16,7 +15,7 @@ This article focuses on how to embed U3D objects in a PDF file
 
 Download Link: [MikTex](http://miktex.org/download)
 
-+ Double click the .exe file and follow the instructions on the screen.
++ Double click the basic-miktex-2.9.5872.exe file you just downloaded and follow the instructions on the screen.
 
 #### Step 2: Install media9 package
 
@@ -26,13 +25,9 @@ Download Link: [MikTex](http://miktex.org/download)
 
 ![alt text](mpm_install.png)
 
-### MacTeX
+#### Step 3: Install Adobe Acrobat
 
-This is for making LaTeX files which will be used to embed U3D files in a PDF on OSX
-
-### Adobe Acrobat
-
-This is for reading the 3D PDF files
++ Download Adobe Acrobat from Adobe's website
 
 Download Link: [Adobe Acrobat](https://get.adobe.com/reader/)
 
@@ -85,14 +80,27 @@ END
 
 + ORTHO option is the orthographic scaling factor
 
-### Making a PDF from the .tex and the .vws files
+### Executing the TeX file - Windows
 
 So you need to follow these steps to generate a 3D PDF:
 
-1. Double-Click on the .tex file and it will open the file with MikTeX
+1. Double-Click on the .tex file and it will open the file with TeXMaker
 
 2. Click on the green play button for the pdf generation to start
 
 3. After the pdf is generated it will open up automatically on the default PDF viewer for MikTeX. **You won't be able to see the 3D object in this viewer**
 
 4. Double click on the pdf file generated. It has the same name as the .tex file
+
+OR
+
+1. Open Command Line
+
+2. Navigate to the folder which contains the tex file
+
+3. Execute the following command
+
+```
+>pdflatex name_of_tex_file.tex
+
+```
