@@ -8,46 +8,23 @@ This article focuses on how to embed U3D objects in a PDF file
 + MacTeX: For generating PDF files that contain U3D objects [OSX]
 + Adobe Acrobat: v7.0 or higher. For viewing PDF files with U3D objects in it.
 
-### MikTeX
+### Installing Instructions - Windows
 
-This is for making LaTeX files which will be used to embed U3D files in a PDF on windows OS
+#### Step 1: Install MiKTeX
+
++ Download the basic MiKTeX installer from 
 
 Download Link: [MikTex](http://miktex.org/download)
 
-#### How to Install
++ Double click the .exe file and follow the instructions on the screen.
 
-Double click the .exe file and follow the instructions on the screen.
+#### Step 2: Install media9 package
 
-#### The media9 package
++ Open command prompt (cmd.exe). You can find it by searching for Command Prompt in the Start Menu
 
-Embedding U3D objects requires either the movie15 or the media9 packages.
++ Type mpm --install=media9
 
-**NOTE: The movie15 package is obsolete and is superseded by media9. So this tutorial uses media9 package.** 
-
-**Install Instructions**
-
-+ Open MiKTeX Package Manager. You can find it by doing a search in Windows Start Bar. 
-
-This window should open up on your screen
-![alt text](mpm.png)
-
-+ Type media9 in the name box and press on the filter button. If the 'Installed On' column is not empty that means media9 is already installed and you don't need to follow any further steps
-
-![alt text](media9.png)
-
-+ Right click on the media9 row and press install 
-
-![alt text](install.png)
-
-+ In the DialogBox that shows up, press ok. The media9 installation should then start
-
-![alt text](popup.png)
-
-+ Once the download is complete, click on the close button. Media9 is now installed on your computer.
-
-![alt text](finish.png)
-
-+ You can check if the installation was successful by typing media9 in the name field again and pressing the filter button. If it was successful then the 'Installed On' column will show today's date.
+![alt text](mpm_install.png)
 
 ### MacTeX
 
