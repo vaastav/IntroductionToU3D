@@ -23,8 +23,6 @@ Download Link: [MikTex](http://miktex.org/download)
 
 + Type mpm --install=media9
 
-![alt text](mpm_install.png)
-
 #### Step 3: Install Adobe Acrobat
 
 + Download Adobe Acrobat from Adobe's website
