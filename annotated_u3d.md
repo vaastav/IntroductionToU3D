@@ -105,3 +105,9 @@ The next 4 bytes is the character encoding of all the strings in the file. This 
 .org/assignments/character-sets 
 
 The next 8 bytes are the units scaling factor. This value converts every value in the file to meters. This value is only present if the Profile Identifier has Defined Units flag set.
+
+## Node Modifier Chain Block
+
+Modifier Chain Blocks are used to contain the declaration blocks for an object and its modifiers.
+
+**Note** The data size for the modifier chain block includes the size of the contained modifier declaration blocks.
