@@ -25,6 +25,8 @@ As part of the consortium, Intel released a library which is available on source
 
 ## File Format Essentials
 
+This part contains all the essential things you need to know about the U3D file format.
+
 ## Data Types in U3D files
 
 + U8 : An unsigned 8 bit integer
@@ -55,9 +57,11 @@ The structure for writing a string is as follows:
 
 From now on, the term STRING will act as a placeholder for the aforementioned structure of writing a string.
 
-## U3D File Structure
+## Other Notes
 
 The bytes in the file are written in Little-Endian order. If you don't know what endianness is, here is a [link](https://www.cs.umd.edu/class/sum2003/cmsc311/Notes/Data/endian.html).
+
+## U3D File Structure
 
 The U3D file is made up of 3 different types of blocks.
 
@@ -66,6 +70,12 @@ The U3D file is made up of 3 different types of blocks.
 - Continuation Block
 
 Each block must be 32-bit or 4-byte aligned with each other. This basically means a new block must **ONLY** start at an address which is divisible by 4. For more on aligned addresses and alignment, please read [this](http://www.songho.ca/misc/alignment/dataalign.html).
+
+Here is an image describing the structure of the blocks in U3D file which has been successful for me.
+
+![alt text][structure]
+
+[structure]: https://github.com/vaastav/IntroductionToU3D/blob/master/file_structure.png
 
 ### What is a Block?
 
