@@ -181,7 +181,7 @@ The Model Node contains: a name, the number of parents, the parents' names and a
 
 + STRING bytes : Model Node Name. Name of this node.
 
-+ variable bytes : Parent Node Data. For the scope of this report, parent scope data is absent and this is of size 0.
++ 4 bytes : Parent Node Count. For the scope of this report, parent data is not used as there is always only 1 node present in the file and thus this value is always 0.
 
 + STRING bytes : Model Resource Name. Name of the resource modifier chain associated with this node.
 
@@ -225,7 +225,7 @@ This block must be a part of a resource modifier chain.
 
 + 44 bytes : Resource Description
 
-+ variable bytes : Skeleton Description. This is out of the scope of this report and is not covered here as this is mainly for animations. For this report it is 0 bytes.
++ 4 bytes : Bone Count. As Skeleton Description is out of the scope of this report and is not covered here as it is mainly for animations; The bone count will always be 0.
 
 #### Max Mesh Description
 
@@ -267,7 +267,7 @@ Structure of each Shading Description is as follows:
 
 Options are as follows:
 
-	0x00000000 - The shader list uses neither diffuse colors nor specular colors.safe
+	0x00000000 - The shader list uses neither diffuse colors nor specular colors.
 	
 	0x00000001 - The shader list uses per vertex diffuse colors.
 	
@@ -686,66 +686,271 @@ This block contains image data for a continuation image previously desrcibed in 
 The example is a complete U3D file containing a texture-less mesh with no vertex colors of a standard cube.
 
 ```
-55 33 44 00 20 00 00 00 00 00 00 00 00 00 00 00
-0C 00 00 00 29 01 00 00 7F 02 00 00 00 00 00 00 
-6A 00 00 00 00 00 00 00 00 00 F0 3F 14 FF FF FF
-44 00 00 00 00 00 00 00 08 00 4D 65 73 68 4E 6F 
-64 65 00 00 00 00 00 00 00 00 00 00 01 00 00 00 
-22 FF FF FF 20 00 00 00 00 00 00 00 08 00 4D 65 
-73 68 4E 6F 64 65 00 00 00 00 0C 00 4D 65 73 68 
-52 65 73 6F 75 72 63 65 03 00 00 00 14 FF FF FF 
-A0 00 00 00 00 00 00 00 0C 00 4D 65 73 68 52 65 
-73 6F 75 72 63 65 01 00 00 00 00 00 00 00 00 00 
-01 00 00 00 31 FF FF FF 8E 00 00 00 00 00 00 00 
-0C 00 4D 65 73 68 52 65 73 6F 75 72 63 65 00 00 
-00 00 01 00 00 00 0C 00 00 00 08 00 00 00 00 00 
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 08 00 
-00 00 08 00 00 00 00 00 00 00 00 00 00 00 00 00 
-00 00 00 00 80 3F 00 00 80 3F 00 00 80 3F 00 00 
-80 3F 00 00 80 3F 00 00 00 00 00 00 00 00 00 00 
-00 00 00 00 00 00 00 00 3B FF FF FF 4A 01 00 00 
-00 00 00 00 0C 00 4D 65 73 68 52 65 73 6F 75 72 
-63 65 00 00 00 00 0C 00 00 00 08 00 00 00 00 00 
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
-00 00 00 00 00 00 00 00 00 00 00 00 80 3F 00 00 
-00 00 00 00 00 00 00 00 00 00 00 00 80 3F 00 00 
-00 00 00 00 00 00 00 00 00 00 00 00 80 3F 00 00 
-80 3F 00 00 80 3F 00 00 00 00 00 00 80 3F 00 00 
-00 00 00 00 80 3F 00 00 00 00 00 00 80 3F 00 00 
-80 3F 00 00 80 3F 00 00 80 3F 00 00 80 3F 00 00 
-00 00 00 00 00 00 01 00 00 00 02 00 00 00 00 00 
-00 00 01 00 00 00 02 00 00 00 04 00 00 00 00 00 
-00 00 00 00 00 00 02 00 00 00 03 00 00 00 00 00 
-00 00 02 00 00 00 03 00 00 00 06 00 00 00 00 00 
-00 00 00 00 00 00 01 00 00 00 03 00 00 00 00 00 
-00 00 01 00 00 00 03 00 00 00 05 00 00 00 00 00 
-00 00 01 00 00 00 04 00 00 00 05 00 00 00 00 00 
-00 00 04 00 00 00 05 00 00 00 07 00 00 00 00 00 
-00 00 04 00 00 00 06 00 00 00 07 00 00 00 00 00 
-00 00 02 00 00 00 04 00 00 00 06 00 00 00 00 00 
-00 00 03 00 00 00 05 00 00 00 06 00 00 00 00 00 
-00 00 05 00 00 00 06 00 00 00 07 00 00 00 00 00
+;; File Header Block
+; Blocktype 0x00443355
+55 33 44 00 
+; Data Size: 32 bytes
+20 00 00 00 
+; Metadata Size: 0 bytes
+00 00 00 00
+; Major Version: 0 
+00 00
+; Minor Version: 0 
+00 00
+; Profile Identifier Value: 0x0000000C - No compression mode and Units are defined
+0C 00 00 00 
+; Declaration Size: 297 bytes
+29 01 00 00 
+; File Size: 639 bytes
+7F 02 00 00 00 00 00 00 
+; Character Encoding: 106. This coresponds to UTF8
+6A 00 00 00
+; Units scaling Factor: 1.0
+00 00 00 00 00 00 F0 3F 
+
+;; Node Modifier Chain Block
+; BlockType: 0xFFFFFF14
+14 FF FF FF
+; Data Size: 68 bytes
+44 00 00 00 
+; Metadata Size: 0 bytes
+00 00 00 00
+; Size of the Name of the Modifier Chain: 8 bytes  
+08 00 
+; Name of the Modifier Chain: MeshNode
+4D 65 73 68 4E 6F 64 65
+; Modifier Chain Type: 0. Node Modifier Chain 
+00 00 00 00
+; Modifier Chain Attributes 
+00 00 00 00
+; Padding or 32-bit alignment 
+00 00
+; Modifier Count: 1 
+01 00 00 00
+;; Model Node Block
+; Blocktype: 0xFFFFFF22 
+22 FF FF FF
+; Data Size: 32 bytes 
+20 00 00 00 
+; MetaData Size: 0 bytes
+00 00 00 00
+; Size of the model node name: 8 bytes 
+08 00
+; Model Node name : MeshNode 
+4D 65 73 68 4E 6F 64 65
+; Parent Node Count: 0 
+00 00 00 00
+; Size of the name of the resource modifier chain : 12 bytes 
+0C 00
+; Name of the resource modifier chain: MeshResource 
+4D 65 73 68 52 65 73 6F 75 72 63 65
+; Visibility : 3 - Both front and back visible 
+03 00 00 00
+
+;; Resource Modifier Chain Block
+; Blocktype 0xFFFFFF14 
+14 FF FF FF
+; Data Size: 160 bytes 
+A0 00 00 00
+; MetaData Size: 0 bytes 
+00 00 00 00 
+; Size of the name of the modifier chain : 12 bytes
+0C 00
+; Name of the modifier chain: MeshResource 
+4D 65 73 68 52 65 73 6F 75 72 63 65
+; Modifier Chain Type: 1 - Resource Modifier Chain 
+01 00 00 00
+; Modifier Chain Attributes : 0
+00 00 00 00
+; Padding for 32-bit alignment 
+00 00
+; Modifier Count : 1 
+01 00 00 00
+;; CLOD Mesh Declaration
+; Blocktype : 0xFFFFFF31 
+31 FF FF FF
+; Data Size: 142 bytes 
+8E 00 00 00
+; MetaData Size: 0 bytes 
+00 00 00 00
+; Size of the name of Mesh Declaration : 12 bytes 
+0C 00 
+; Name of the Mesh Declaration: MeshResource
+4D 65 73 68 52 65 73 6F 75 72 63 65 
+; Chain Index : 0
+00 00 00 00 
+;; Max Mesh Description
+; Mesh Attributes: 0x00000001 - Exclude Normals
+01 00 00 00
+; Face Count: 12 
+0C 00 00 00 
+; Positon Count : 8
+08 00 00 00
+; Normal Count : 0 
+00 00 00 00 
+; Diffuse Color Count: 0
+00 00 00 00 
+; Specular Color Count: 0
+00 00 00 00 
+; Texture Coord Count: 0
+00 00 00 00 
+; Shading Count: 1
+01 00 00 00 
+;; Shading Description
+; Shading Attributes : 0x00000000 - Shader doesn't use diffuse or specular colors
+00 00 00 00
+; Texture Layer Count: 0
+00 00 00 00 
+; Original Shading ID: 0
+00 00 00 00
+;; CLOD Description 
+; Minimum Resolution: 8
+08 00 00 00 
+; Final Maximum Resolution: 8
+08 00 00 00
+;; Resource Description
+; Position Quality Factor : 0 
+00 00 00 00 
+; Normal Quality Factor : 0
+00 00 00 00
+; Texture Coord Quality Factor 
+00 00 00 00 
+; Position Inverse Quant : 1.0
+00 00 80 3F 
+; Normal Inverse Quant : 1.0
+00 00 80 3F 
+; Texture Coord Inverse Quant : 1.0
+00 00 80 3F 
+; Diffuse Color Inverse Quant : 1.0
+00 00 80 3F 
+; Specular Inverse Quant : 1.0
+00 00 80 3F 
+; Normal Crease Parameter : 0.0
+00 00 00 00 
+; Normal Update Parameter : 0.0
+00 00 00 00
+; Normal Tolerance Parameter : 0.0 
+00 00 00 00 
+; Bone Count : 0
+00 00 00 00 
+; Padding for 32-bit alignment
+00 00 
+
+;; CLOD Mesh Continuation
+; Blocktype: 0xFFFFFF3B
+3B FF FF FF 
+; Data Size: 330 bytes
+4A 01 00 00 
+; Metadata Size: 0 bytes
+00 00 00 00 
+; Size of the name of the Mesh Declaration: 12 bytes
+0C 00 
+; Name of the mesh declaration : MeshResource
+4D 65 73 68 52 65 73 6F 75 72 63 65 
+; Chain Index: 0
+00 00 00 00 
+; Base Face Count : 12
+0C 00 00 00 
+; Base Position Count : 8
+08 00 00 00
+; Base Normal Count : 0 
+00 00 00 00 
+; Base Diffuse Color Count : 0
+00 00 00 00 
+; Base Specular Color Count : 0
+00 00 00 00 
+; Base Texture Coord Count : 0
+00 00 00 00 
+;; Positons Array
+; Position 1: ( 0, 0, 0 )
+00 00 00 00 00 00 00 00 00 00 00 00 
+; Position 2: ( 1.0, 0, 0 )
+00 00 80 3F 00 00 00 00 00 00 00 00
+; Position 3: ( 0, 1.0, 0 ) 
+00 00 00 00 00 00 80 3F 00 00 00 00 
+; Position 4: ( 0, 0, 1.0 )
+00 00 00 00 00 00 00 00 00 00 80 3F 
+; Position 5: ( 1.0, 1.0, 0 )
+00 00 80 3F 00 00 80 3F 00 00 00 00 
+; Position 6: ( 1.0, 0, 1.0 ) 
+00 00 80 3F 00 00 00 00 00 00 80 3F 
+; Position 7: ( 0, 1.0, 1.0 )
+00 00 00 00 00 00 80 3F 00 00 80 3F
+; Position 8 : ( 1.0, 1.0, 1.0 ) 
+00 00 80 3F 00 00 80 3F 00 00 80 3F 
+;; Face Array
+; Face 1 Original Shading Index: 0
+00 00 00 00 
+; Face 1 Position Indices ( 0, 1, 2 )
+00 00 00 00 
+01 00 00 00 
+02 00 00 00 
+; Face 2 Original Shading Index: 0
+00 00 00 00 
+; Face 2 Position Indices ( 1, 2, 4 )
+01 00 00 00 
+02 00 00 00 
+04 00 00 00 
+; Face 3 Original Shading Index: 0
+00 00 00 00
+; Face 3 Position Indices ( 0, 2, 3 ) 
+00 00 00 00 
+02 00 00 00 
+03 00 00 00 
+; Face 4 Original Shading Index: 0
+00 00 00 00 
+; Face 4 Position Indices ( 2, 3, 6 )
+02 00 00 00 
+03 00 00 00 
+06 00 00 00 
+; Face 5 Original Shading Index: 0
+00 00 00 00 
+; Face 5 Position Indices ( 0, 1, 3 )
+00 00 00 00 
+01 00 00 00 
+03 00 00 00 
+; Face 6 Original Shading Index: 0
+00 00 00 00 
+; Face 6 Position Indices ( 1, 3, 5 )
+01 00 00 00 
+03 00 00 00 
+05 00 00 00 
+; Face 7 Original Shading Index: 0
+00 00 00 00 
+; Face 7 Position Indices ( 1, 4, 5 )
+01 00 00 00 
+04 00 00 00 
+05 00 00 00 
+; Face 8 Original Shading Index: 0
+00 00 00 00 
+; Face 8 Position Indices ( 4, 5, 7 )
+04 00 00 00 
+05 00 00 00 
+07 00 00 00 
+; Face 9 Original Shading Index: 0
+00 00 00 00 
+; Face 9 Position Indices ( 4, 6, 7 )
+04 00 00 00 
+06 00 00 00 
+07 00 00 00 
+; Face 10 Original Shading Index: 0
+00 00 00 00 
+; Face 10 Position Indices ( 2, 4, 6 )
+02 00 00 00 
+04 00 00 00 
+06 00 00 00 
+; Face 11 Original Shading Index: 0
+00 00 00 00 
+; Face 11 Position Indices ( 3, 5, 6 )
+03 00 00 00 
+05 00 00 00 
+06 00 00 00 
+; Face 12 Original Shading Index: 0
+00 00 00 00 
+; Face 3 Position Indices ( 5, 6, 7 )
+05 00 00 00 
+06 00 00 00 
+07 00 00 00 
+; Padding for 32-bit alignment
+00 00
 ```
-
-Line 1 : 55 33 44 00 20 00 00 00 00 00 00 00
-
-**55 33 44 00** : This value is 0x00443355. The BlockType of the File Header Block. It is also the FileIdentifier of the file. This is what you would call a magic number.
-
-**20 00 00 00** : This value is 32 base 10. This is the dataSize of the file header block. The file header block will always have this data size.
-
-**00 00 00 00** : This value is 0. This is the metadataSize. As the file header has no metadata with it, this is 0.
-
-**00 00**       : This is the major version of the file format. This is supposed to be 0.
-
-**00 00**       : This is the minor version of the file format. This is supposed to be 0.
-
-**0C 00 00 00** : The profile identifier value.
-
-**29 01 00 00** : The declaration size.
-
-**7F 02 00 00 00 00 00 00** : The file size.
-
-**6A 00 00 00** : The character encoding of all the strings in the file. This value corresponds to UTF-8.
-
-**00 00 00 00 00 00 F0 3F** : Units scaling Factor
